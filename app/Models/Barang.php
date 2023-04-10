@@ -10,6 +10,8 @@ class Barang extends Model
 	use HasFactory;
 
 	protected $table = 'barang';
+	// public $incrementing = true;
+	protected $primaryKey = 'id_barang';
 	public $incrementing = true;
 	protected $fillable = [
 		'sku',

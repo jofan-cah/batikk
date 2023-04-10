@@ -15,25 +15,37 @@
             Kategori' }}</h6>
         </div>
         <div class="card-body">
-          <div class="form-group">
-            <label for="sku">Nama Sku</label>
-            <?php $sku = old('sku') ?>
-            <input type="text" class="form-control @error('sku')
-                   is-invalid
-                  @enderror" id="sku" name="sku" value="{{ isset($kategori) ? $kategori->sku : $sku}}">
 
+          <?php $sku = old('sku') ?>
+          {{-- <input type="text" class="form-control @error('sku')
+                   is-invalid
+                  @enderror" id="sku" name="sku" value="{{ isset($kategori) ? $kategori->sku : $sku}}"> --}}
+          <div class="form-group">
+            <label>SKU</label>
+            <select class="form-control  @error('sku')
+                   is-invalid
+                  @enderror select2 " style="width: 100%;" name="sku">
+              @foreach ($result as $data)
+              <option value="{{$data->sku}}">{{$data->sku}}
+              </option>
+              @endforeach
+            </select>
             @error('sku')
             <div class="invalid-feedback">
               {{$message}}
             </div>
             @enderror
           </div>
+
+
+
           <div class="form-group">
             <label for="harga">harga </label>
             <?php $harga = old('harga') ?>
             <input type="text" class="form-control @error('harga')
                    is-invalid
-                  @enderror" id="harga" name="harga" value="{{ isset($kategori) ? $kategori->harga : $harga }}">
+                  @enderror" onkeypress="return hanyaAngka(event)" id="tanpa-rupiah" name="harga"
+              value="{{ isset($kategori) ? $kategori->harga : $harga }}">
             @error('harga')
             <div class="invalid-feedback">
               {{$message}}
@@ -44,7 +56,7 @@
           <div class="form-group">
             <?php $diskon = old('diskon') ?>
             <label for="diskon">diskon </label>
-            <input type="text" class="form-control @error('diskon')
+            <input type="text" onkeypress="return hanyaAngka(event)" class="form-control @error('diskon')
                    is-invalid
                   @enderror" id="diskon" name="diskon" value="{{ isset($kategori) ? $kategori->diskon : $diskon }}">
             @error('diskon')
@@ -93,12 +105,14 @@
             @enderror
           </div>
           <div class="form-group">
+
             <?php $diskon_psn = old('diskon_psn') ?>
-            <label for="diskon_psn">diskon_psn </label>
+            <label for="diskon_psn">diskon psn </label>
             <input type="text" class="form-control @error('diskon_psn')
                    is-invalid
                   @enderror" id="diskon_psn" name="diskon_psn"
-              value="{{ isset($kategori) ? $kategori->diskon_psn : $diskon_psn }}">
+              value="{{ isset($kategori) ? $kategori->diskon_psn : $diskon_psn }}"
+              onkeypress="return hanyaAngka(event)">
             @error('diskon_psn')
             <div class="invalid-feedback">
               {{$message}}

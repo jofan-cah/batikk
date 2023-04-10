@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kategori;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class KategoriController extends Controller
 {
@@ -16,10 +17,15 @@ class KategoriController extends Controller
 
 	public function tambah()
 	{
-		return view('kategori.form');
+		$result = DB::table('barang')
+			// ->join('barang', 'barang.sku', '=', 'kategori.sku')
+			->get();
+		return view('kategori.form', [
+			'result' => $result
+		]);
 	}
 
-	
+
 
 	public function simpan(Request $request)
 	{

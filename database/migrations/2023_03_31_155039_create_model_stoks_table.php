@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('stok', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id_stok');
             $table->string('sku');
             $table->double('qty');
             $table->string('kat');

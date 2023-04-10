@@ -15,7 +15,8 @@ class BarangController extends Controller
 	{
 
 		$result = DB::table('barang')
-			// ->join('users', 'users.id', '=', 'barang.updat')
+			->join('users', 'users.id', '=', 'barang.updat')
+			->join('harga_barang', 'harga_barang.sku', '=', 'barang.sku')
 			->get();
 
 
@@ -405,6 +406,7 @@ class BarangController extends Controller
 
 	public function tambah()
 	{
+
 		return view('barang.form');
 	}
 

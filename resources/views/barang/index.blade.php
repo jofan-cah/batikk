@@ -96,6 +96,7 @@
             <th>SUP</th>
             <th>ASAL</th>
             <th>PT</th>
+            <th>Harga</th>
             <th>CREATED</th>
             <th>UPDATED</th>
             <th>UPDAT BY</th>
@@ -110,8 +111,8 @@
           {{-- @dd($result); --}}
           @foreach ($result as $row)
           <tr>
-            <td>{{$row->id}}</td>
-            {{-- <td>{{$loop->iteration}}</td> --}}
+            {{-- <td>{{$row->id}}</td> --}}
+            <td>{{$loop->iteration}}</td>
             <td>{{$row->sku}}</td>
             <td>{{$row->korner}}</td>
             <td>{{$row->produk}}</td>
@@ -128,13 +129,14 @@
             <td>{{$row->sup}}</td>
             <td>{{$row->asal}}</td>
             <td>{{$row->pt}}</td>
+            <td>{{$row->harga}}</td>
             <td>{{$row->updated_at}}</td>
             <td>{{$row->created_at}}</td>
-            <td>{{$row->id}}</td>
+            <td>{{$row->username}}</td>
 
             <td>
-              <a href="{{ route('barang.edit', $row->id) }}" class="btn btn-warning">Edit</a>
-              <a href="{{ route('barang.hapus', $row->id) }}" class="btn btn-danger">Hapus</a>
+              <a href="{{ route('barang.edit', $row->id_barang) }}" class="btn btn-warning">Edit</a>
+              <a href="{{ route('barang.hapus', $row->id_barang) }}" class="btn btn-danger">Hapus</a>
               </form>
             </td>
 
