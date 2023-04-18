@@ -29,7 +29,7 @@ Route::controller(AuthController::class)->group(function () {
 });
 
 Route::get('/', function () {
-	return view('welcome');
+	return view('auth.login');
 });
 
 

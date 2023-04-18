@@ -50,6 +50,7 @@
                 </div>
                 @enderror
               </div>
+              
               <div class="form-group">
                 <label for="model">Model </label>
                 <input type="text" value="{{ isset($barang) ? $barang->model : '' }}" class="form-control  @error('model')

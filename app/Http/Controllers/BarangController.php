@@ -432,29 +432,7 @@ class BarangController extends Controller
 			'updat' => 'required'
 		]);
 
-		// $data = [
-		// 	'sku' => $request->sku,
-		// 	'korner' => $request->korner,
-		// 	'produk' => $request->produk,
-		// 	'model' => $request->model,
-		// 	'motif' => $request->motif,
-		// 	'korner' => $request->korner,
-		// 	'produk' => $request->produk,
-		// 	'model' => $request->model,
-		// 	'motif' => $request->motif,
-		// 	'proses' => $request->proses,
-		// 	'material' => $request->material,
-		// 	'warna' => $request->warna,
-		// 	'rasa' => $request->rasa,
-		// 	'brand' => $request->brand,
-		// 	'size' => $request->size,
-		// 	'satuan' => $request->satuan,
-		// 	'status' => $request->status,
-		// 	'sup' => $request->sup,
-		// 	'asal' => $request->asal,
-		// 	'pt' => $request->pt,
-		// 	'updat' => $request->updat
-		// ];
+
 
 		Barang::create($validatedData);
 

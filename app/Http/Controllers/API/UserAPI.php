@@ -7,13 +7,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Pagination\LengthAwarePaginator;
 
-class UserAPI extends Controller
+class UserAPI extends AbstractAdapter
 {
+
+  
 
     public function index()
     {
-        $user = User::all();
+        $user = User::paginate(20);
         return response()->json([
             'message' => 'data user',
             'data' => $user,
@@ -64,59 +67,59 @@ class UserAPI extends Controller
         ]);
     }
 
-    public function update(Request $request, $id)
-    {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
-            'username' => 'required|string|max:255|unique:users',
-            'password' => 'required|string',
-            'level' => 'required',
-        ]);
+    // public function update(Request $request, $id)
+    // {
+    //     $validator = Validator::make($request->all(), [
+    //         'name' => 'required|string|max:255',
+    //         'username' => 'required|string|max:255|unique:users',
+    //         'password' => 'required|string',
+    //         'level' => 'required',
+    //     ]);
 
-        if ($validator->fails()) {
-            return response()->json(
-                [
-                    'message' => 'Error',
-                    'eroors' => $validator->errors()
-                ]
-            );
-        }
+    //     if ($validator->fails()) {
+    //         return response()->json(
+    //             [
+    //                 'message' => 'Error',
+    //                 'eroors' => $validator->errors()
+    //             ]
+    //         );
+    //     }
 
 
-        $user = User::find($id);
-        if ($user) {
-            $user->barang = $request->barang;
-            $user->harga = $request->harga;
+    //     $user = User::find($id);
+    //     if ($user) {
+    //         $user->barang = $request->barang;
+    //         $user->harga = $request->harga;
 
-            $user->save();
+    //         $user->save();
 
-            return response()->json([
-                'message' => 'Berhasil di Ubah ' . $id,
-                'data' => $user,
-            ]);
-        } else {
-            return response()->json([
-                'message' => 'Data not Found !'
-            ]);
-        }
-    }
+    //         return response()->json([
+    //             'message' => 'Berhasil di Ubah ' . $id,
+    //             'data' => $user,
+    //         ]);
+    //     } else {
+    //         return response()->json([
+    //             'message' => 'Data not Found !'
+    //         ]);
+    //     }
+    // }
 
-    public function destroy($id)
-    {
-        $user = User::find($id);
+    // public function destroy($id)
+    // {
+    //     $user = User::find($id);
 
-        if ($user) {
-            $user->delete();
+    //     if ($user) {
+    //         $user->delete();
 
-            return response()->json([
-                'message' => 'sukses',
-                'data' => $id
+    //         return response()->json([
+    //             'message' => 'sukses',
+    //             'data' => $id
 
-            ]);
-        } else {
-            return response()->json([
-                'message' => 'Data not Found !'
-            ]);
-        }
-    }
+    //         ]);
+    //     } else {
+    //         return response()->json([
+    //             'message' => 'Data not Found !'
+    //         ]);
+    //     }
+    // }
 }
